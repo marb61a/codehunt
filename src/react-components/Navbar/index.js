@@ -8,6 +8,28 @@ class Navbar extends React.Component{
         };
     }
     
+    showPopup = () => {
+        this.setState({popupStatus: true});
+    };
+    
+    hidePopup = () => {
+        this.setState({popupStatus: false});
+    };
+    
+    renderLogo() {
+        return (
+            <a href="#"><img src="/img/favicon.ico"/></a>
+        );
+    }
+    
+    renderUser(){
+        return(
+            <section>
+            
+            </section>
+        );
+    }
+    
     render(){
         return(
             <section>
