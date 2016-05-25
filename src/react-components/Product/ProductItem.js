@@ -10,6 +10,22 @@ class ProductItem extends React.Component{
         };
     }
     
+    showProductPopup = () => {
+        this.setState({
+            productPopupStatus: true
+        });
+    }
+    
+    hideProductPopup = () => {
+        this.setState({
+            productPopupStatus: false
+        });
+    }
+    
+    renderInfoSession(){
+        
+    }
+    
     render(){
         return(
             <li className="product-item">
