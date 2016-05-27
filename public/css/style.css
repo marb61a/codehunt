@@ -73,3 +73,33 @@ a {
 	background-color: white;
 	text-align: center;
 }
+
+.small-avatar {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+}
+
+.medium-avatar {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+}
+
+/*------------------------------ NAVBAR ------------------------------*/
+.login-btn{
+	padding-top: 9px;
+	color: #999999;
+	font-weight: 500;
+	font-size: 11px;
+	display: block;
+}
+
+.login-btn:hover {
+	color: #da552f;
+}
+
+.navbar {
+	text-align: center;
+	padding: 10px 10px 5px;
+}
