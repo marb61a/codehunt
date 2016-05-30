@@ -22,6 +22,27 @@ class Actions {
             setTimeout(() => dispatch(user));
         };
     }
+    
+    login(){
+        return(dispatch) =>{
+            var firebaseRef = new Firebase('');
+            firebaseRef.authWithOAuthPopup('facebook', (error, authData) => {
+            if (error) {
+              return;
+            }
+            
+            var user = {
+              id: authData.facebook.id,
+              name: authData.facebook.displayName,
+              avatar: authData.facebook.profileImageURL
+            };
+            
+            firebaseRef.child("users").child(authData.facebook.id).set(user);
+            dispatch(user);
+          });
+          
+        };
+    }
 }
 
 export default alt.createActions(Actions);
