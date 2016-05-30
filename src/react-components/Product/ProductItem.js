@@ -22,8 +22,28 @@ class ProductItem extends React.Component{
         });
     }
     
+    renderNewWindowIcon() {
+        return (
+            <a className="product-item-link" href={this.props.link}>
+                <span>
+                    <i className="fa fa-external-link"></i>
+                </span>
+            </a>
+        );
+    }
+    
     renderInfoSession(){
-        
+        return(
+            <section className="product-item-info">
+                <a href="#" onClick={this.showProductPopup} >
+                    <h2>{this.props.name}</h2>
+                </a>
+                <p> {this.props.description} </p>
+                <a href="#">
+                    <img className="small-avatar" src={this.props.maker.avatar}/>
+                </a>
+            </section>
+        );
     }
     
     render(){
