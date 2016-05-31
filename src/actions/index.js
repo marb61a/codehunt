@@ -43,6 +43,14 @@ class Actions {
           
         };
     }
+    
+    logout(){
+        return(dispatch) => {
+            var firebaseRef = new Firebase('');
+            firebaseRef.unauth();
+            setTimeout(() => dispatch(null));
+        };
+    }
 }
 
 export default alt.createActions(Actions);

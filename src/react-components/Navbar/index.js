@@ -16,6 +16,14 @@ class Navbar extends React.Component{
         this.setState({popupStatus: false});
     };
     
+    renderProductSearch(){
+        return(
+            <section className="left-side">
+                <input className="product-search" placeholder="SEARCH" />
+            </section>    
+        );
+    }
+    
     renderLogo() {
         return (
             <a href="#"><img src="/img/favicon.ico"/></a>
@@ -24,8 +32,10 @@ class Navbar extends React.Component{
     
     renderUser(){
         return(
-            <section>
-            
+            <section className="right-side">
+                {
+                    this.props.user
+                }
             </section>
         );
     }
@@ -34,7 +44,9 @@ class Navbar extends React.Component{
         return(
             <section>
                 <section className="navbar">
-                
+                    {this.renderProductSearch()}
+                    {this.renderLogo()}
+                    {this.renderUser()}
                 </section>
             </section>    
         );
