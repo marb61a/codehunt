@@ -5,6 +5,7 @@ import connectToStores from 'alt-utils/lib/connectToStores';
 import ProductStore from '../../stores/ProductStore';
 import Actions from '../../actions';
 
+
 class ProductPopup extends React.Component{
     constructor() {
         super();
@@ -12,6 +13,10 @@ class ProductPopup extends React.Component{
     
     static getStores() {
         return [ProductStore];
+    }
+    
+    static getPropsFromStores(){
+        return ProductStore.getState();
     }
     
     renderHeader(){
@@ -29,6 +34,17 @@ class ProductPopup extends React.Component{
         );
     }
     
+    renderBodyDiscussion(){
+        return(
+            <section className="discussion">
+                <h2>Discussion</h2>
+                {
+                    
+                }
+            </section>
+        );
+    }
+    
     renderBody(){
         return (
             <section className="product-popup-body">
@@ -36,6 +52,16 @@ class ProductPopup extends React.Component{
                     {this.renderBodyDiscussion()}
                 </main>
             </section>
+        );
+    }
+    
+    renderComments(){
+        return(
+            <ul className="comment-list">
+                {
+                    
+                }
+            </ul>
         );
     }
     
