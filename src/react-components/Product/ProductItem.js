@@ -49,7 +49,11 @@ class ProductItem extends React.Component{
     render(){
         return(
             <li className="product-item">
-                    
+                <Upvote {...this.props}/>
+                <img className="product-item-media" src={this.props.media} />
+                {this.renderInfoSession}
+                {this.renderNewWindowIcon}
+                <ProductPopup {...this.props} status={this.state.productPopupStatus} hidePopup={this.hideProductPopup}/>
             </li> 
         );
     }

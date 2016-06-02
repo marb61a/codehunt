@@ -18,8 +18,11 @@ class App extends React.component{
     render(){
         return(
             <section>
+                <Navbar user = {this.props.user}/>
+                <HomePage/>
             </section>
         );
     }
 }
 
+ReactDOM.render(<App/>, document.getElementById('root'));
