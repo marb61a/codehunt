@@ -29,6 +29,7 @@ a {
   text-decoration: none;
 }
 
+
 /*------------------------------ PRODUCT LIST -----------------------------*/
 .product-list {
 	margin-top: 20px;
@@ -85,6 +86,32 @@ a {
 	height: 32px;
 	border-radius: 50%;
 }
+
+
+/*------------------------------ UPVOTE BUTTON ------------------------------*/
+.upvote-button {
+	font-weight: 600;
+	margin-right: 15px;
+	width: 34px;
+	text-align: center;
+	padding: 4px 0;
+	border-radius: 4px;
+	background-color: #fff;
+}
+
+.upvote-button:hover {
+	color: #5e9aee;
+}
+
+.upvote-button.active {
+	color: #5e9aee;
+}
+
+.upvote-button > * {
+	display: block;
+	padding: 3px;
+}
+
 
 /*------------------------------ NAVBAR ------------------------------*/
 .login-btn{
