@@ -51,6 +51,24 @@ class Actions {
             setTimeout(() => dispatch(null));
         };
     }
+    
+    getProducts(){
+        return(dispatch) => {
+            var firebaseRef = new Firebase('');
+            firebaseRef.on('value', (snapshop) => {
+                var productsValue = snapshop.val();
+                var products = _(productsValue).keys().map((productKey) => {
+                    var item = _.clone(productsValue[productKey]);
+                    item.key = productKey;
+                    return item;
+                })
+                .value();
+                dispatch(products);
+            });
+        };
+    }
+    
+    
 }
 
 export default alt.createActions(Actions);
