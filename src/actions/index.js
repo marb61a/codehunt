@@ -68,7 +68,23 @@ class Actions {
         };
     }
     
-    
+    addVote(productId, userId) {
+        return(dispatch ) => {
+            var firebaseRef = new Firebase('');
+            var voteRef = firebaseRef.child('votes').child(productId).child(userId);
+            voteRef.on('value', (snapshop) => {
+                if(snapshop.val == null){
+                    voteRef.set(true);
+                    firebaseRef = firebaseRef.child('products').child(productId).child('upvote');
+                    var vote = 0;
+                    firebaseRef.on('value', (snapshop)=> {
+                        vote = snapshop.val();
+                    });
+                    firebaseRef.set(vote+1);
+                }
+            });
+        };
+    }
 }
 
 export default alt.createActions(Actions);
