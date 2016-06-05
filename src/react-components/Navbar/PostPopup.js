@@ -26,7 +26,22 @@ class PostPopup extends React.Component {
             <section>
               <table>
                 <tbody>
-                
+                  <tr>
+                    <td>Name</td>
+                    <td><input placeholder="Enter product's name" ref="name"/></td>
+                  </tr>
+                  <tr>
+                    <td>Description</td>
+                    <td><input placeholder="Enter product's description" ref="description"/></td>
+                  </tr>
+                  <tr>
+                    <td>Link</td>
+                    <td><input placeholder="http://www..." ref="link"/></td>
+                  </tr>
+                  <tr>
+                    <td>Media</td>
+                    <td><input placeholder="Pate a direct link to an image" ref="media"/></td>
+                  </tr>
                 </tbody>
               </table>
             </section>
