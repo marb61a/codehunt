@@ -19,6 +19,14 @@ class ProductPopup extends React.Component{
         return ProductStore.getState();
     }
     
+    shouldComponentUpdate(nextProps, nextState){
+        if(nextProps.status && this.props.status != nextProps.status){
+            Actions.getComments(this.props.pid);    
+        }
+        
+        return true;
+    }
+    
     renderHeader(){
         return(
             <header style={{backgroundImage: 'url(' + this.props.media + ')'}}>
@@ -32,6 +40,20 @@ class ProductPopup extends React.Component{
                 </section>
             </header>    
         );
+    }
+    
+    handleComment = (e) => {
+        if(e.keyCode === 13 && e.target.value.length > 0){
+            var comment = {
+                content: e.target.value,
+                name: this.props.user.name,
+                avatar: this.props.user.avatar
+            };
+            
+            Actions.addComment(this.props.pid, comment);
+            e.target.value = null;
+
+        }
     }
     
     renderBodyDiscussion(){
