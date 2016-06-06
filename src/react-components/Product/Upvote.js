@@ -3,7 +3,7 @@ import Actions from '../../actions';
 import connectToStores from 'alt-utils/lib/connectToStores';
 import ProductStore from '../../stores/ProductStore';
 
-
+@connectToStores
 class Upvote extends React.Component {
     static getStores() {
         return [ProductStore];
@@ -11,6 +11,10 @@ class Upvote extends React.Component {
     
     static getPropsFromStores() {
         return ProductStore.getState();
+    }
+    
+    handleVote = () => {
+        Actions.addVote(this.props.pid, this.props.user.id);
     }
     
     render(){

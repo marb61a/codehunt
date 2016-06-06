@@ -5,7 +5,7 @@ import connectToStores from 'alt-utils/lib/connectToStores';
 import ProductStore from '../../stores/ProductStore';
 import Actions from '../../actions';
 
-
+@connectToStores
 class ProductPopup extends React.Component{
     constructor() {
         super();
@@ -61,8 +61,16 @@ class ProductPopup extends React.Component{
             <section className="discussion">
                 <h2>Discussion</h2>
                 {
-                    
+                    this.props.user
+                    ?
+                    <section className="postComment">
+                        <img className="medium-avatar" src={this.props.user.avatar}/>
+                        <input placeholder="What do you think of this product?" onKeyUp={this.handleComment} />
+                    </section>
+                    :
+                    null
                 }
+                {this.renderComments()}
             </section>
         );
     }
