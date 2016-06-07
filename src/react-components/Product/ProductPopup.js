@@ -89,7 +89,17 @@ class ProductPopup extends React.Component{
         return(
             <ul className="comment-list">
                 {
-                    
+                    this.props.comment.map(function(comment, idx){
+                        return(
+                            <li key={idx}>
+                                <img className="medium-avatar" src={comment.avatar}/>
+                                <section>
+                                    <strong>{comment.name}</strong>
+                                    <p>{comment.content}</p>
+                                </section>
+                            </li>
+                        );
+                    })
                 }
             </ul>
         );
@@ -97,8 +107,9 @@ class ProductPopup extends React.Component{
     
     render(){
         return(
-            <Popup>
-            
+            <Popup {...this.props} style="product-popup">
+                {this.renderHeader()}
+                {this.renderBody()}
             </Popup>            
         );
     }
