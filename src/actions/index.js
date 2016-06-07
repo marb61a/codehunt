@@ -68,6 +68,13 @@ class Actions {
         };
     }
     
+    addProduct(product){
+        return(dispatch) => {
+            var firebaseRef = new Firebase('');
+            firebaseRef.push(product);
+        };
+    }
+    
     addVote(productId, userId) {
         return(dispatch ) => {
             var firebaseRef = new Firebase('');
@@ -82,6 +89,29 @@ class Actions {
                     });
                     firebaseRef.set(vote+1);
                 }
+            });
+        };
+    }
+    
+    addComment(productId, comment){
+        return(dispatch) => {
+            var firebaseRef = new Firebase('');
+            firebaseRef.child(productId).push(comment);    
+        };
+    }
+    
+    getComments(productId){
+        return(dispatch) => {
+            var firebaseRef = new Firebase('');
+            firebaseRef.child(productId).on("value", (snapshop) => {
+                var commentsVal = snapshop.val();
+                var comments = _(commentsVal).keys().map((commentKey) => {
+                    var item = _.clone(commentsVal[commentKey]);
+                    item.key = commentKey;
+                    return item;
+                }).value();
+                
+                dispatch(comments);
             });
         };
     }
