@@ -28,7 +28,11 @@ class HomePage extends React.Component {
                 <section>
                     <section className="container">
                         {
-                            
+                            this.props.products
+                            ?
+                            <ProductList productList={this.props.products}/>
+                            :
+                            null 
                         }
                     </section>
                 </section>

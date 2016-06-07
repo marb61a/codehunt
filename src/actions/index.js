@@ -5,7 +5,7 @@ import _ from 'lodash';
 class Actions {
     initSession(){
         return(dispatch) => {
-            var firebaseRef = new Firebase('');
+            var firebaseRef = new Firebase('https://codehunter.firebaseio.com');
             var authData = firebaseRef.getAuth();
             var user;
             
@@ -25,7 +25,7 @@ class Actions {
     
     login(){
         return(dispatch) =>{
-            var firebaseRef = new Firebase('');
+            var firebaseRef = new Firebase('https://codehunter.firebaseio.com');
             firebaseRef.authWithOAuthPopup('facebook', (error, authData) => {
             if (error) {
               return;
@@ -46,7 +46,7 @@ class Actions {
     
     logout(){
         return(dispatch) => {
-            var firebaseRef = new Firebase('');
+            var firebaseRef = new Firebase('https://codehunter.firebaseio.com');
             firebaseRef.unauth();
             setTimeout(() => dispatch(null));
         };
@@ -54,7 +54,7 @@ class Actions {
     
     getProducts(){
         return(dispatch) => {
-            var firebaseRef = new Firebase('');
+            var firebaseRef = new Firebase('https://codehunter.firebaseio.com/products');
             firebaseRef.on('value', (snapshop) => {
                 var productsValue = snapshop.val();
                 var products = _(productsValue).keys().map((productKey) => {
@@ -70,14 +70,14 @@ class Actions {
     
     addProduct(product){
         return(dispatch) => {
-            var firebaseRef = new Firebase('');
+            var firebaseRef = new Firebase('https://codehunter.firebaseio.com/products');
             firebaseRef.push(product);
         };
     }
     
     addVote(productId, userId) {
         return(dispatch ) => {
-            var firebaseRef = new Firebase('');
+            var firebaseRef = new Firebase('https://codehunter.firebaseio.com');
             var voteRef = firebaseRef.child('votes').child(productId).child(userId);
             voteRef.on('value', (snapshop) => {
                 if(snapshop.val == null){
@@ -95,14 +95,14 @@ class Actions {
     
     addComment(productId, comment){
         return(dispatch) => {
-            var firebaseRef = new Firebase('');
+            var firebaseRef = new Firebase('https://codehunter.firebaseio.com/comments');
             firebaseRef.child(productId).push(comment);    
         };
     }
     
     getComments(productId){
         return(dispatch) => {
-            var firebaseRef = new Firebase('');
+            var firebaseRef = new Firebase('https://codehunter.firebaseio.com/comments');
             firebaseRef.child(productId).on("value", (snapshop) => {
                 var commentsVal = snapshop.val();
                 var comments = _(commentsVal).keys().map((commentKey) => {
